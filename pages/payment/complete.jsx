@@ -3,18 +3,18 @@ import PaymentForm from "@/components/paymentform";
 import { useEffect } from "react";
 
 const Complete = ({ checkoutFormContent, data }) => {
-  const getPaymentDetails = async () => {
-    try {
-      const response = await axios.post("/api/payment", { token: data.token });
-      console.log(response.data);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getPaymentDetails();
-  }, []);
+  // const getPaymentDetails = async () => {
+  //   try {
+  //     const response = await axios.post("/api/payment", { token: data.token });
+  //     console.log(response.data);
+  //     return response.data;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getPaymentDetails();
+  // }, []);
   return (
     <>
       <div>
