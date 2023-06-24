@@ -12,10 +12,11 @@ const Test = ({ data, setData, setCheckoutFormContent }) => {
       const response = await axios.post("/api/checkout", data);
       // console.log(response.data.token);
       setCheckoutFormContent(response.data.checkoutFormContent);
+      const token = response.data.token;
+      router.push(`/payment/complete?token=${token}`);
     } catch (error) {
       console.log(error);
     }
-    router.push("/payment/complete");
   };
 
   const handleInputChange = (e) => {
