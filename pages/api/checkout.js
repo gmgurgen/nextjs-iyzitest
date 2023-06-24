@@ -12,7 +12,7 @@ const initializeCheckoutForm = (req, res, data) => {
     basketId: "B67832",
     paymentChannel: Iyzipay.PAYMENT_CHANNEL.WEB,
     paymentGroup: Iyzipay.PAYMENT_GROUP.PRODUCT,
-    callbackUrl: `${process.env.NEXT_PUBLIC_URL}/payment/complete`,
+    callbackUrl: `${process.env.NEXT_PUBLIC_URL}/api/payment`,
     enabledInstallments: [2, 3, 6, 9],
     buyer: {
       id: "BY789",

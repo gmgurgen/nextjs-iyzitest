@@ -1,34 +1,23 @@
 import axios from "axios";
-import PaymentForm from "@/components/paymentform";
 import { useEffect } from "react";
-import { useRouter } from "next/router";
 
-const Complete = ({ checkoutFormContent, data }) => {
-  const router = useRouter();
+const Complete = () => {
+  const getPaymentDetails = async () => {
+    try {
+      const response = await axios.get("/api/payment");
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    const getPaymentDetails = async () => {
-      const token = router.query.token; // Retrieve the token from the query parameter
-      if (token) {
-        try {
-          const response = await axios.post("/api/payment", { token });
-          console.log(response.data);
-          // Handle the response data here
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    };
-
     getPaymentDetails();
-  }, [router.query.token]);
+  }, []);
   return (
     <>
-      <div>
-        {checkoutFormContent && (
-          <PaymentForm checkoutFormContent={checkoutFormContent} />
-        )}
-      </div>
-      {/* <div className="payment-status">{response.data}</div> */}
+      <div className="payment-status w-28 h-40 bg-red-500"></div>
     </>
   );
 };

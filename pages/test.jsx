@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 
-const Test = ({ data, setData, setCheckoutFormContent }) => {
+const Test = ({ data, setData, setCheckoutFormContent, token, setToken }) => {
   // const [data, setData] = useState({});
   // const [checkoutFormContent, setCheckoutFormContent] = useState("");
   const router = useRouter();
@@ -13,7 +13,8 @@ const Test = ({ data, setData, setCheckoutFormContent }) => {
       // console.log(response.data.token);
       setCheckoutFormContent(response.data.checkoutFormContent);
       const token = response.data.token;
-      router.push(`/payment/complete?token=${token}`);
+      setToken(token);
+      router.push(`/payment/payment`);
     } catch (error) {
       console.log(error);
     }

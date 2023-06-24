@@ -1,8 +1,8 @@
 import Iyzipay from "iyzipay";
 import * as Checkouts from "@/methods/checkouts";
 
-const getFormPaymentDetails = (req, res) => {
-  const token = req.query.token; // Retrieve the token from the query parameters
+const getFormPaymentDetails = (req, res, data) => {
+  const token = req.body.token; // Retrieve the token from the request body
 
   Checkouts.getFormPayment({
     locale: Iyzipay.LOCALE.TR,
